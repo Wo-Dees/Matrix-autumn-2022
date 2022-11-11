@@ -80,8 +80,29 @@ Matrix Matrix::Inverse() const {
 }
 
 double Matrix::GetDeterminant() const {
-    // TODO
-    return 0;
+    Matrix matrix(matrix_);
+    for (unsigned short i = 0; i < width_ - 1; ++i) {
+        if (matrix[i][i] == 0) {
+            for (unsigned short j = i + 1; i < width_; ++j) {
+               if (matrix[j][i] != 0) {
+                   for (unsigned short k = i; k < width_; ++k) {
+                       std::swap(matrix[i][k], matrix[j][k]);
+                   }
+                   break;
+               }
+            }
+        }
+        for (unsigned short j = i + 1; i < width_; ++j) {
+            for (unsigned short k = i; k < width_; ++k) {
+                matrix[j][k] -= matrix[i][k] * matrix[j][i] / matrix[i][i];
+            }
+        }
+    }
+    double det = 1;
+    for (unsigned short i = 0; i < width_ - 1; ++i) {
+        det *= matrix[i][i];
+    }
+    return det;
 }
 
 bool operator==(const Matrix &matrix_1, const Matrix &matrix_2) {

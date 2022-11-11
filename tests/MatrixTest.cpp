@@ -121,3 +121,15 @@ TEST(Matrix, Get) {
   EXPECT_TRUE(matrix.GetString(4) == String(vector_w_2));
   EXPECT_TRUE(matrix.GetDiagonal() == diag);
 }
+
+TEST(Matrix, Determinant) {
+    Matrix matrix(3, 3);
+    for (size_t i = 0; i < 3; ++i) {
+        for (size_t j = 0; j < 3; ++j) {
+            if (i == j) {
+                matrix[i][i] = 3;
+            }
+        }
+    }
+    EXPECT_TRUE(matrix.GetDeterminant() == 27);
+}
