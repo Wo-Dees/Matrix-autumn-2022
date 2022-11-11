@@ -4,6 +4,8 @@ project(matrix)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_subdirectory(google-test)
+
 add_executable(play play/play.cpp
         api/Matrix.hpp
         api/Vector.hpp
@@ -15,8 +17,7 @@ add_executable(play play/play.cpp
         src/Broadcasting.cpp
         src/MatrixСalculations.cpp
         src/ScalarСalculations.cpp
-        src/GetData.cpp
-        )
+        src/GetData.cpp)
 
 add_executable(MatrixTest tests/MatrixTest.cpp
         api/Matrix.hpp
@@ -29,8 +30,8 @@ add_executable(MatrixTest tests/MatrixTest.cpp
         src/Broadcasting.cpp
         src/MatrixСalculations.cpp
         src/ScalarСalculations.cpp
-        src/GetData.cpp
-        )
+        src/GetData.cpp)
+target_link_libraries(MatrixTest gtest gtest_main)
 
 add_executable(StringTest tests/StringTest.cpp
         api/Matrix.hpp
@@ -45,6 +46,7 @@ add_executable(StringTest tests/StringTest.cpp
         src/ScalarСalculations.cpp
         src/GetData.cpp
         )
+target_link_libraries(StringTest gtest gtest_main)
 
 add_executable(VectorTest tests/VectorTest.cpp
         api/Matrix.hpp
@@ -59,6 +61,7 @@ add_executable(VectorTest tests/VectorTest.cpp
         src/ScalarСalculations.cpp
         src/GetData.cpp
         )
+target_link_libraries(VectorTest gtest gtest_main)
 
 add_executable(GetData tests/GetDataTests.cpp
         api/Matrix.hpp
@@ -73,6 +76,7 @@ add_executable(GetData tests/GetDataTests.cpp
         src/ScalarСalculations.cpp
         src/GetData.cpp
         )
+target_link_libraries(GetData gtest gtest_main)
 
 add_executable(ScalarCalculationsTests tests/ScalarCalculationsTests.cpp
         api/Matrix.hpp
@@ -87,6 +91,7 @@ add_executable(ScalarCalculationsTests tests/ScalarCalculationsTests.cpp
         src/ScalarСalculations.cpp
         src/GetData.cpp
         )
+target_link_libraries(ScalarCalculationsTests gtest gtest_main)
 
 add_executable(MatrixCalculations tests/MatrixCalculations.cpp
         api/Matrix.hpp
@@ -101,6 +106,7 @@ add_executable(MatrixCalculations tests/MatrixCalculations.cpp
         src/ScalarСalculations.cpp
         src/GetData.cpp
         )
+target_link_libraries(MatrixCalculations gtest gtest_main)
 
 add_executable(BroadcastingTests tests/BroadcastingTests.cpp
         api/Matrix.hpp
@@ -115,3 +121,4 @@ add_executable(BroadcastingTests tests/BroadcastingTests.cpp
         src/ScalarСalculations.cpp
         src/GetData.cpp
         )
+target_link_libraries(BroadcastingTests gtest gtest_main)
