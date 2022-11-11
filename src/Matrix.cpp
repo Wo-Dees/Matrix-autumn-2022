@@ -74,9 +74,13 @@ Matrix Matrix::Transpose() const {
     return matrix;
 }
 
-Matrix Matrix::Inverse() const {
-    // TODO
-    return Matrix(3, 3);
+Matrix Matrix::Inverse() const { // for matrix 2 on 2
+    Matrix matrix(2, 2);
+    std::swap(matrix[0][0], matrix[1][1]);
+    matrix[0][1] *= -1;
+    matrix[1][0] *= -1;
+    matrix *= 1 / matrix.GetDeterminant();
+    return matrix;
 }
 
 double Matrix::GetDeterminant() const {
