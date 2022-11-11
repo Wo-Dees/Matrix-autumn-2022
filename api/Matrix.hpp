@@ -5,6 +5,8 @@
 
 #include <vector>
 
+#include <ostream>
+
 class Vector;
 class String;
 
@@ -85,3 +87,8 @@ Matrix operator*(const Matrix& maxtix, const String& string);
 Matrix operator%(const Matrix& maxtix_1, const Matrix& maxtix_2);
 Vector operator%(const Matrix& maxtix, const Vector& vector);
 String operator%(const String& string, const Matrix& maxtix);
+
+bool operator==(const Matrix& matrix_1, const Matrix& matrix_2);
+bool operator!=(const Matrix& matrix_1, const Matrix& matrix_2);
+
+std::ostream &operator<<(std::ostream& os, const Matrix& matrix);

@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.23)
 project(matrix)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_FLAGS "-fsanitize=address")
 
 add_subdirectory(google-test)
 
@@ -63,20 +64,18 @@ add_executable(VectorTest tests/VectorTest.cpp
         )
 target_link_libraries(VectorTest gtest gtest_main)
 
-add_executable(GetData tests/GetDataTests.cpp
+add_executable(GetDataTests tests/GetDataTests.cpp
         api/Matrix.hpp
         api/Vector.hpp
         api/String.hpp
-
         src/Matrix.cpp
         src/Vector.cpp
         src/String.cpp
         src/Broadcasting.cpp
         src/MatrixСalculations.cpp
         src/ScalarСalculations.cpp
-        src/GetData.cpp
-        )
-target_link_libraries(GetData gtest gtest_main)
+        src/GetData.cpp)
+target_link_libraries(GetDataTests gtest gtest_main)
 
 add_executable(ScalarCalculationsTests tests/ScalarCalculationsTests.cpp
         api/Matrix.hpp
@@ -89,8 +88,7 @@ add_executable(ScalarCalculationsTests tests/ScalarCalculationsTests.cpp
         src/Broadcasting.cpp
         src/MatrixСalculations.cpp
         src/ScalarСalculations.cpp
-        src/GetData.cpp
-        )
+        src/GetData.cpp)
 target_link_libraries(ScalarCalculationsTests gtest gtest_main)
 
 add_executable(MatrixCalculations tests/MatrixCalculations.cpp

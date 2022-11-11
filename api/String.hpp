@@ -35,6 +35,8 @@ public:
 
     Vector Transpose();
 
+    unsigned short Size() const;
+
 private:
 
     unsigned short width_;
@@ -60,3 +62,6 @@ String operator-(const String& vector, double number);
 String operator-(double number, const String& vector);
 String operator+(const String& vector, double number);
 String operator+(double number, const String& vector);
+
+bool operator==(const String& string_1, const String& string_2);
+bool operator!=(const String& string_1, const String& string_2);

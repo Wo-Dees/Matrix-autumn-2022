@@ -1,4 +1,6 @@
 #include "../api/Matrix.hpp"
+#include "../api/String.hpp"
+
 
 // Matrix
 

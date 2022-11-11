@@ -31,3 +31,20 @@ double &Vector::operator[](unsigned short i) {
 String Vector::Transpose() {
     return String(array_);
 }
+
+unsigned short Vector::Size() const {
+    return array_.size();
+}
+
+bool operator==(const Vector &string_1, const Vector &string_2) {
+    for (unsigned short i = 0; i < string_1.Size(); ++i) {
+        if (string_1[i] != string_2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool operator!=(const Vector& string_1, const Vector& string_2) {
+    return !(string_1 == string_2);
+}
