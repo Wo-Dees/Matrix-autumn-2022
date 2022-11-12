@@ -66,11 +66,11 @@ Matrix operator*(double number, const Matrix &maxtix) {
 }
 
 Matrix operator*(const Vector &vector, const Matrix &maxtix) {
-    return Matrix(vector, maxtix.GetSize().second) % maxtix;
+    return Matrix(vector, maxtix.GetSize().second) * maxtix;
 }
 
 Matrix operator*(const Matrix &maxtix, const String &string) {
-    return maxtix % Matrix(string, maxtix.GetSize().first);
+    return maxtix * Matrix(string, maxtix.GetSize().first);
 }
 
 // String

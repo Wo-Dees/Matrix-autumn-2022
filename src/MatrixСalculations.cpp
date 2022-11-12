@@ -3,16 +3,18 @@
 Matrix &Matrix::operator%=(const Matrix &maxtix) {
     unsigned short h = this->height_;
     unsigned short w = maxtix.width_;
-    std::vector<std::vector<double>> mat(h);
+    std::vector<std::vector<double>> mat;
     for (unsigned short i = 0; i < h; ++i) {
         mat.emplace_back(std::vector<double>(w, 0));
         for (unsigned short j = 0; j < w; ++j) {
-            for (unsigned short k = 0; k < width_; ++k) {
+            for (unsigned short k = 0; k < this->width_; ++k) {
                 mat[i][j] += matrix_[i][k] * maxtix.matrix_[k][j];
             }
         }
     }
     matrix_ = std::move(mat);
+    height_ = h;
+    width_ = w;
     return *this;
 }
 
