@@ -8,7 +8,7 @@ std::vector<double> Matrix::GetDiagonal() const {
     return vector;
 }
 
-String Matrix::GetString(unsigned short i) const  {
+String Matrix::GetString(unsigned short i) const {
     return String(matrix_[i]);
 }
 

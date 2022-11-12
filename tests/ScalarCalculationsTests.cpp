@@ -65,4 +65,69 @@ TEST(Matrix, Scalar) {
     EXPECT_TRUE(matrix1 + matrix2 == matrix3);
     EXPECT_TRUE(matrix1 - matrix1 == matrix4);
     EXPECT_TRUE(matrix2 * matrix2 == matrix5);
+
+    EXPECT_TRUE((matrix1 += matrix2) == matrix3);
+    EXPECT_TRUE((matrix2 *= matrix2) == matrix5);
+}
+
+TEST(Vector, scalar) {
+    unsigned short len = 1000;
+
+    std::vector<double> vector1(len);
+    std::vector<double> vector2(len);
+    std::vector<double> vector3(len);
+    std::vector<double> vector4(len);
+
+    for (int i = 0; i < len; ++i) {
+        vector1[i] = i;
+        vector2[i] = -i;
+        vector3[i] = i * i;
+    }
+
+    Vector vector_1(vector1);
+    Vector vector_2(vector2);
+    Vector vector_3(vector3);
+    Vector vector_4(len, 0);
+
+    EXPECT_TRUE((vector_1 + vector_2) == vector_4);
+    EXPECT_TRUE(vector_1 * vector_1 == vector_3);
+    EXPECT_TRUE(vector_1 - vector_2 == vector_1 + vector_1);
+
+    EXPECT_TRUE((vector_1 += vector_2) == vector_4);
+
+    vector_1 -= vector_2;
+
+    EXPECT_TRUE((vector_1 *= vector_1) == vector_3);
+    EXPECT_TRUE((vector_1 -= vector_2) == (vector_1 += vector_1));
+}
+
+TEST(String, scalar) {
+    unsigned short len = 1000;
+
+    std::vector<double> vector1(len);
+    std::vector<double> vector2(len);
+    std::vector<double> vector3(len);
+    std::vector<double> vector4(len);
+
+    for (int i = 0; i < len; ++i) {
+        vector1[i] = i;
+        vector2[i] = -i;
+        vector3[i] = i * i;
+    }
+
+    String string_1(vector1);
+    String string_2(vector2);
+    String string_3(vector3);
+    String string_4(len);
+
+    EXPECT_TRUE(string_1 + string_2 == string_4);
+    EXPECT_TRUE(string_1 * string_1 == string_3);
+    EXPECT_TRUE(string_1 - string_2 == string_1 + string_1);
+
+    EXPECT_TRUE((string_1 += string_2) == string_4);
+
+    string_1 -= string_2;
+
+    EXPECT_TRUE((string_1 *= string_1) == string_3);
+    EXPECT_TRUE((string_1 -= string_2) == (string_1 += string_1));
 }

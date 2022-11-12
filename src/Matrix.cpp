@@ -1,4 +1,5 @@
 #include "../api/Matrix.hpp"
+#include <iostream>
 
 // Constructors
 Matrix::Matrix(unsigned short height, unsigned short width) : height_(height), width_(width) {
@@ -87,7 +88,7 @@ double Matrix::GetDeterminant() const {
     Matrix matrix(matrix_);
     for (unsigned short i = 0; i < width_ - 1; ++i) {
         if (matrix[i][i] == 0) {
-            for (unsigned short j = i + 1; i < width_; ++j) {
+            for (unsigned short j = i + 1; j < width_; ++j) {
                if (matrix[j][i] != 0) {
                    for (unsigned short k = i; k < width_; ++k) {
                        std::swap(matrix[i][k], matrix[j][k]);
@@ -96,14 +97,15 @@ double Matrix::GetDeterminant() const {
                }
             }
         }
-        for (unsigned short j = i + 1; i < width_; ++j) {
+        for (unsigned short j = i + 1; j < width_; ++j) {
+            double number = matrix[j][i] / matrix[i][i];
             for (unsigned short k = i; k < width_; ++k) {
-                matrix[j][k] -= matrix[i][k] * matrix[j][i] / matrix[i][i];
+                matrix[j][k] -= matrix[i][k] * number;
             }
         }
     }
     double det = 1;
-    for (unsigned short i = 0; i < width_ - 1; ++i) {
+    for (unsigned short i = 0; i < width_; ++i) {
         det *= matrix[i][i];
     }
     return det;
